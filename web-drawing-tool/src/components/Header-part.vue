@@ -1,5 +1,5 @@
 <template>
-  <div>Web Drawing Tool</div>  
+  <div>Web Drawing Tool</div>
 </template>
 
 <script>

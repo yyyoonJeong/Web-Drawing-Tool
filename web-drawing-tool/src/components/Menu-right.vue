@@ -1,5 +1,7 @@
 <template>
-  <div>Menu Componenent</div>  
+  <v-container>
+
+  </v-container>  
 </template>
 
 <script>
