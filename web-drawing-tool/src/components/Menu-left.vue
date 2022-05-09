@@ -19,10 +19,11 @@
           <template v-slot:activator>
             <v-list-item-content>
               <v-list-item-title v-text = "item.title"></v-list-item-title>
+              <v-img :src = "item.image"></v-img>
             </v-list-item-content>
           </template>
 
-          <v-list-item
+         <v-list-item
             v-for = "child in item.items"
             :key = "child.title"
           >
@@ -48,7 +49,7 @@ export default {
       },
       {
         action: "mdi-play",
-        items: [{ title: "sample" }],
+        items: [{ title: "@/assets/캡스톤 산업 심볼/전기설게심볼/Power_Supply_AC_Supply.png" }],
         title: "Power Supply",
       },
       {

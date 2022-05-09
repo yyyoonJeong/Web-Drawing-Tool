@@ -48,66 +48,42 @@
             </v-btn>
           </template>
           <v-card>
-            <v-card-title>카테고리
+            <v-card-title>
+              카테고리
               <v-spacer></v-spacer>
-              <v-btn
-                icon
-                @click = "close()"
-              >
+              <v-btn icon @click = "close_dialog">
                 <v-icon>mdi-close</v-icon>
               </v-btn>
             </v-card-title>
-            <fieldset class = "category">
-              <v-card-actions>
-                <v-row align = "center">
-                  <v-col align = "center">
-                    <v-btn
-                      class = "ma-5"
-                      @click = "dialog = false"
-                    >
-                      Free Drawing
+            <v-divider></v-divider>
+            <v-card-actions>
+              <v-row align = "center">
+                <v-col align = "center">
+                  <fieldset class = "ma-10">
+                    <v-btn class = "ma-7" @click = "sample">
+                    Free Drawing
                     </v-btn>
-                    <v-spacer></v-spacer>
                     <v-divider></v-divider>
-                    <v-btn
-                      class = "ma-5"
-                      @click = "close"
-                    >
-                      electric circuit diagram
+                    <v-btn class = "ma-7" @click = "sample">
+                    electric circuit diagram
                     </v-btn>
-                    <v-spacer></v-spacer>
                     <v-divider></v-divider>
-                    <v-btn
-                      class = "ma-5"
-                      @click = "dialog = false"
-                    >
-                      Sample category 
+                    <v-btn class = "ma-7" @click = "sample">
+                    Sample category 
                     </v-btn>
-                    <v-spacer></v-spacer>
-                  </v-col>
-                </v-row>
-              </v-card-actions>
-            </fieldset>
+                  </fieldset>
+                </v-col>
+              </v-row>
+            </v-card-actions>
           </v-card>
         </v-dialog>
       </div>
 
       <div class = "a">
-      <v-btn
-        text
-      > 
+      <v-btn text>
         <span class = "font1">불러오기</span>
-        <v-file-input
-          prepend-icon = ""
-          clearable = False
-          hide-input
-          text
-          @click = "upload"
-        ></v-file-input>
-        <div
-          v-if = "preview">
-          <img v-bind:src = "preview">
-        </div>
+        <input type = "file" @change = "onFileChange" />
+        <!-- <v-file-input clearable = False hide-input text accept=".draw"></v-file-input> -->
       </v-btn>
       </div>
 
@@ -133,17 +109,21 @@
 
       </div>
 
+
     </v-app-bar>
 
-    <v-main>
+    <div class = "preview">
+      <img v-if = "url" :src = "url" />
+    </div>
 
+    <v-main>
       <div class = "wrap">
         <Menu_left/>
         <Content/>
         <Menu_right/>
       </div>
-
     </v-main>
+
   </v-app>
 </template>
 
@@ -163,21 +143,18 @@ export default {
 
   data: () => ({
     dialog: false,
-    preview: ""
+    url: null,
   }),
 
   methods: {
-    close: function () {
-      this.dialog = false
-    }
-  },
-    upload: function (event) {
-      var file = event.target.files[0]
-      if (file && file.type.match(/^image\/(png|jpeg)$/)) {
-        this.preview = window.URL.createObjectURL(this.file)
-      }
+    close_dialog() {
+      this.dialog = false;
     },
-
+    onFileChange(event) {
+      const file = event.target.files[0];
+      this.url = URL.createObjectURL(file);
+    },
+  },
 };
 </script>
 
@@ -219,7 +196,6 @@ export default {
   color: #FFFFFF;
 }
 
-
 .font1{
   color: #FFFFFF;
 }
@@ -229,11 +205,14 @@ export default {
   display: flex;
 }
 
-.category{
-  text-align: center;
-  width: 400px;
-  margin: auto;
+.preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
+.preview img {
+  max-width: 900px;
+  max-height: 600px;
+}
 </style>
