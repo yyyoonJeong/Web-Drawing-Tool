@@ -49,7 +49,7 @@ export default {
       },
       {
         action: "mdi-play",
-        items: [{ title: "@/assets/캡스톤 산업 심볼/전기설게심볼/Power_Supply_AC_Supply.png" }],
+        items: [{ title: "sample" }],
         title: "Power Supply",
       },
       {

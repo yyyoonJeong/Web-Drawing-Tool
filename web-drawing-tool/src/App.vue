@@ -79,14 +79,14 @@
         </v-dialog>
       </div>
 
-      <div class = "a">
-      <v-btn text>
-        <span class = "font1">불러오기</span>
-        <input type = "file" @change = "onFileChange" />
+      <div class = "a" >
+        <v-btn text>
+          <input type = "file" id = "upload_button" style = "display : none" @change = "onFileChange" />
+          <label for = "upload_button" class = "font1">불러오기</label>
         <!-- <v-file-input clearable = False hide-input text accept=".draw"></v-file-input> -->
-      </v-btn>
+        </v-btn>
       </div>
-
+    
       <div class = "a">
       <v-btn
         href="저장하기 링크"
@@ -204,6 +204,22 @@ export default {
   margin-right: 3%;
   display: flex;
 }
+
+/* .upload_image input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+.a .upload_image {
+  margin: 1%;
+  border-radius: 5px;
+  background-color: #F1C40F; 
+  color: #FFFFFF;
+} */
 
 .preview {
   display: flex;
