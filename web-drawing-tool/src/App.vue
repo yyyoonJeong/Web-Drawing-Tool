@@ -64,7 +64,7 @@
                     Free Drawing
                     </v-btn>
                     <v-divider></v-divider>
-                    <v-btn class = "ma-7" @click = "sample">
+                    <v-btn class = "ma-7" @click = "show_left_menu">
                     electric circuit diagram
                     </v-btn>
                     <v-divider></v-divider>
