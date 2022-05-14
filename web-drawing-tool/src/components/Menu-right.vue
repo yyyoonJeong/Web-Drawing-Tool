@@ -3,6 +3,7 @@
     <canvas id="c" width = "500" height = "800">
     <img src="@/assets/전기설계심볼/Power_Supply/AC_Supply.png" id = "my-image">
     </canvas>
+
   </v-container>  
 </template>
 
