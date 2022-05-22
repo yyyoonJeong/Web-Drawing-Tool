@@ -334,4 +334,3 @@ div {
   max-width: 450px;
 }
 </style>
->

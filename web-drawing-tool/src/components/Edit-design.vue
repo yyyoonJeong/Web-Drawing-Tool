@@ -1,14 +1,23 @@
 <template>
-    <v-container>
-        <p>배경 서식</p>
+    <v-container class="overflow-y-auto">
+        <p><b>배경 서식</b></p>
         <v-row dense>
             <v-col cols="6">배경 색</v-col>
-            <v-col cols="6">색상 선택 바???</v-col>
+            <v-col cols="6">
+                <v-color-picker
+                    class = "background_color"
+                    dot-size="10"
+                    hide-canvas
+                    hide-inputs
+                    hide-mode-switch
+                    swatches-max-height="100"
+                ></v-color-picker>
+            </v-col>
         </v-row>
 
         <v-row dense>
             <v-col cols="6">배경 무늬</v-col>
-            <v-col cols="6">
+            <v-col cols="6" class = "a">
                 <v-radio-group v-model="column" column>
                     <v-radio
                     label="무늬 없음"
@@ -26,13 +35,13 @@
         <v-divider></v-divider>
         <p></p>
         
-        <p>객체 서식</p>
+        <p><b>객체 서식</b></p>
 
         <!--------------------------- 1 ---------------------------->
         <v-sheet
             class="mx-auto"
-            elevation="8"
-            max-width="800"
+            elevation="3"
+            max-width="400"
         >
             <v-slide-group
                 v-model="model"
@@ -48,8 +57,8 @@
                     <v-card
                         :color="active ? undefined : 'grey lighten-1'"
                         class="ma-4"
-                        height="100"
-                        width="100"
+                        height="40"
+                        width="40"
                         @click="toggle"
                     >
                         <v-row
@@ -61,7 +70,7 @@
                                 <v-icon
                                     v-if="active"
                                     color="white"
-                                    size="40"
+                                    size="5"
                                     v-text="'mdi-check-circle-outline'"
                                 ></v-icon>
                             </v-scale-transition>
@@ -76,12 +85,13 @@
         <v-divider></v-divider>
         <p></p>
 
-        <p>선</p>
+        <p><b>선</b></p>
         <!------------------------- 2 ------------------------------>
-        <v-row>
+        <v-row dense>
             <v-col cols="6" md="4">
                 <!--선 종류 overflow buttons-->
                 <v-overflow-btn
+                class = "line_type"
                 :items="line_type"
                 label="선 종류"
                 rounded
@@ -91,13 +101,23 @@
             <v-col cols="6" md="4">
                 <!--선 두께 overflow buttons-->
                 <v-overflow-btn
+                class = "line_thickness"
                 :items="line_weight"
-                label="선 두께"
+                label="1pt"
                 rounded
                 ></v-overflow-btn>
             </v-col>
 
-            <v-col cols="6" md="4">색상 선택 바???</v-col>
+            <v-col cols="6" md="4">
+                <v-color-picker
+                    class = "line_color" 
+                    dot-size="10"
+                    hide-canvas
+                    hide-inputs
+                    hide-mode-switch
+                    swatches-max-height="100"
+                ></v-color-picker>
+            </v-col>
         </v-row>
         <!------------------------ 2 ------------------------------->
 
@@ -107,18 +127,29 @@
 
         <!------------------------- 3 ------------------------------>
         <v-row>
-            <v-col cols="6" md="4">채우기</v-col>
+            <v-col cols="6" md="4"><b>채우기</b></v-col></v-row>
+            <v-row>
 
             <v-col cols="6" md="4">
                 <!--무늬 종류 overflow buttons-->
                 <v-overflow-btn
+                class = "paint_type"
                 :items="pattern_type"
                 label="무늬 종류"
                 rounded
                 ></v-overflow-btn>
             </v-col>
 
-            <v-col cols="6" md="4">색상 선택 바???</v-col>
+            <v-col cols="6" md="4">
+                <v-color-picker 
+                    class = "paint_color"
+                    dot-size="10"
+                    hide-canvas
+                    hide-inputs
+                    hide-mode-switch
+                    swatches-max-height="100"
+                ></v-color-picker>
+            </v-col>
         </v-row>
         <!-------------------------- 3 ----------------------------->
     </v-container>
@@ -158,7 +189,34 @@ export default {
 
 <style scoped>
 div {
-    width: 600px;
-    max-width: 600px;
+    width: 400px;
+    max-width: 400px;
+    max-height: 600px;
+}
+.background_color{
+    background-color: #EEEEEE;
+    width: 150px;
+    height: 100px;
+}
+.line_color{
+    background-color: #EEEEEE;
+    height: 100px;
+}
+.paint_color{
+    background-color: #EEEEEE;
+    height: 100px;
+}
+.line_type{
+    width: 160px;
+}
+.line_thickness{
+    width: 130px;
+}
+.paint_type{
+    width: 200px;
+}
+.a{
+    width:100px;
+    max-width:100px;
 }
 </style>
